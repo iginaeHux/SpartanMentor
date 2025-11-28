@@ -3,165 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChronoMentor // Student Selection</title>
+    <title>TIME-TRAVEL MENTORSHIP HUB</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
+        /* --- NEW CORE STYLING DEFINITIONS --- */
         :root {
-            --color-deep-blue: #2E4057; 
-            --color-bronze-trim: #A57F4D; 
-            --color-tech-neon: #7FFF00; 
-            --color-disabled: #444; 
+            --color-steel-blue: #4A6572;        /* Steely Blue/Grey */
+            --color-apricot-gold: #D7A868;      /* Apricot Gold/Nude */
+            --color-data-cyan: #00CED1;         /* Cyan for Neon Accents */
+            --color-light-bg: #F5F5F5;
         }
-
+        
         body {
-            /* Use the Classroom Hall background */
+            /* Using the Classroom Hall background */
             background-image: url('https://i.imgur.com/8A8deCd.jpeg'); 
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
-            color: white;
+            color: var(--color-steel-blue);
             font-family: 'Alegreya Sans', sans-serif;
             margin: 0;
-            padding: 40px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .hub-container {
+            width: 90%;
+            max-width: 1000px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 5px solid var(--color-steel-blue);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2.5em;
-            color: var(--color-tech-neon);
-            text-align: center;
-            margin-bottom: 40px;
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            font-size: 2.8em;
+            color: var(--color-steel-blue);
+            border-bottom: 3px solid var(--color-apricot-gold);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
         }
 
-        .character-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
+        .mentee-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .mentee-card {
+            background-color: var(--color-light-bg);
+            border: 2px solid var(--color-apricot-gold);
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .mentee-card h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--color-steel-blue);
+            font-size: 1.5em;
+            margin-top: 0;
+            border-bottom: 1px solid var(--color-steel-blue);
+            padding-bottom: 5px;
+        }
+
+        .mentee-card p {
+            font-size: 1.1em;
+            line-height: 1.5;
+            margin-bottom: 15px;
         }
         
-        .character-card {
-            background: rgba(0, 0, 0, 0.85);
-            border: 3px solid var(--color-bronze-trim);
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            height: 100%;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .character-card.active {
-            border-color: var(--color-tech-neon);
-            box-shadow: 0 0 15px var(--color-tech-neon);
-        }
-
-        .character-card.active:hover {
-            transform: scale(1.03);
-            background: rgba(0, 0, 0, 0.95);
-        }
-
-        .character-card.inactive {
-            cursor: not-allowed;
-            opacity: 0.4;
-            background: var(--color-disabled);
-        }
-
-        .char-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            color: var(--color-bronze-trim);
-        }
-
-        .char-img {
+        .mentee-card img {
             width: 100%;
-            max-width: 200px;
             height: auto;
-            margin: 0 auto 15px;
-            border: 1px solid white;
+            max-height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 2px solid var(--color-steel-blue);
         }
 
-        .char-status {
-            font-size: 0.9em;
+        .start-button {
+            background-color: var(--color-apricot-gold);
+            color: var(--color-steel-blue);
+            border: 3px solid var(--color-steel-blue);
+            padding: 12px 25px;
+            font-size: 1.0em;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            width: 100%;
             margin-top: 10px;
         }
         
-        .start-button {
-            margin-top: 15px;
-            padding: 10px;
-            background-color: var(--color-tech-neon);
-            color: var(--color-deep-blue);
-            border: none;
+        .start-button:hover {
+            background-color: #EBC080;
+        }
+        
+        .locked-status {
+            color: var(--color-rage-red);
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
             font-family: 'Cinzel', serif;
-            text-transform: uppercase;
         }
 
-        .start-button:disabled {
-            background-color: #666;
-            color: #ccc;
-        }
     </style>
 </head>
 <body>
 
-    <h1>// SELECT YOUR SPARTAN MENTEE //</h1>
+    <div class="hub-container">
+        <h1>TIME-TRAVEL MENTORSHIP HUB // SELECTION</h1>
 
-    <div class="character-grid">
-        
-        <div class="character-card active" onclick="window.location.href='kallistos_game.html'">
-            <div>
-                <div class="char-title">Kallistos: The Spartan Warrior</div>
-                <img src="https://i.imgur.com/YsNrM4u.mp4" alt="Kallistos Spartan Warrior" class="char-img">
-                <p>
-                    <span style="color: var(--color-tech-neon); font-weight: bold;">OBJECTIVE:</span> Self-Control and Emotional Regulation. Must be able to sit in a test room without engaging in violence.
-                </p>
+        <div class="mentee-grid">
+            
+            <div class="mentee-card">
+                <h2>Subject: Kallistos (The Spartan)</h2>
+                <img src="https://i.imgur.com/1000059874.jpg" alt="Kallistos Character Portrait">
+                <p><strong>Origin:</strong> Sparta, 480 BCE</p>
+                <p><strong>Goal:</strong> Re-integrate into non-combative society; master modern emotional and ethical standards.</p>
+                <p><strong>Status:</strong> Awaiting Mentor Assignment.</p>
+                <button class="start-button" onclick="window.location.href='kallistos_game.html'">START MENTORSHIP</button>
             </div>
-            <button class="start-button">START MENTORSHIP</button>
-        </div>
-
-        <div class="character-card inactive">
-            <div>
-                <div class="char-title">Elara: The Roman Scholar</div>
-                <img src="https://i.imgur.com/8Qj8j3D.gif" alt="Elara Roman Scholar" class="char-img"> 
-                <p>
-                    <span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.** Requires completion of one mentorship cycle.
-                </p>
+            
+            <div class="mentee-card">
+                <h2>Subject: Cleopatra (The Diplomat)</h2>
+                <img src="https://i.imgur.com/kXn0u2l.jpg" alt="Cleopatra Character Portrait">
+                <p><strong>Origin:</strong> Ptolemaic Egypt, 51 BCE</p>
+                <p><strong>Goal:</strong> Learn modern leadership and conflict resolution. High-level political challenge.</p>
+                <p><strong>Status:</strong> Locked. Requires completion of Kallistos's mission.</p>
+                <span class="locked-status">MISSION LOCKED</span>
             </div>
-            <button class="start-button" disabled>LOCKED</button>
+            
         </div>
-
-        <div class="character-card inactive">
-            <div>
-                <div class="char-title">Akiko: The Sengoku Strategist</div>
-                <img src="https://i.imgur.com/1000059874.jpg" alt="Akiko Samurai" class="char-img">
-                <p>
-                    <span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.** Requires completion of one mentorship cycle.
-                </p>
-            </div>
-            <button class="start-button" disabled>LOCKED</button>
-        </div>
-        
-        <div class="character-card inactive">
-            <div><div class="char-title">Isabella: The Renaissance</div><img src="https://i.imgur.com/1000059874.jpg" alt="Isabella Astronomer" class="char-img"><p><span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.**</p></div>
-            <button class="start-button" disabled>LOCKED</button>
-        </div>
-        <div class="character-card inactive">
-            <div><div class="char-title">Nefer: The Old Kingdom</div><img src="https://i.imgur.com/1000059874.jpg" alt="Nefer Engineer" class="char-img"><p><span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.**</p></div>
-            <button class="start-button" disabled>LOCKED</button>
-        </div>
-        <div class="character-card inactive">
-            <div><div class="char-title">Sun-Ho: The Joseon Scholar</div><img src="https://i.imgur.com/1000059874.jpg" alt="Sun-Ho Scholar" class="char-img"><p><span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.**</p></div>
-            <button class="start-button" disabled>LOCKED</button>
-        </div>
-
     </div>
 
 </body>
