@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBJECT FILE: KALLISTOS // Emotion Regulation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Core Styling Definitions --- */
+        :root {
+            --color-deep-blue: #2E4057; 
+            --color-bronze-trim: #A57F4D; 
+            --color-scroll-text: #301E0A;
+            --color-tech-neon: #7FFF00; 
+            --color-character-blue: rgba(173, 216, 230, 0.5); 
+            --color-teleprompter-neon: #00FFFF;
+            --color-rage-red: #FF0000;
+        }
+
+        body {
+            /* Using the original background image that loads the scroll */
+            background-image: url('https://i.imgur.com/aBfZEED.jpeg'); 
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed; 
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1200px; 
+            background: rgba(255, 255, 255, 0.95);
+            border: 5px solid var(--color-deep-blue); 
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
+            margin: 20px auto; 
+        }
+
+        .header-trim {
+            background-color: var(--color-deep-blue);
+            color: white;
+            padding: 10px 40px; 
+            font-family: 'Cinzel', serif;
+            font-size: 1.6em; 
+            text-align: center;
+        }
+        
+        .content-area {
+            padding: 20px 30px; 
+            display: grid;
+            grid-template-columns: 350px 1fr; 
+            grid-template-rows: auto 1fr auto;
+            gap: 15px; 
+            min-height: 80vh; 
+        }
+
+        h2 {
+            grid-column: 1 / -1; 
+            font-family: 'Cinzel', serif;
+            font-size: 2.2em; 
+            color: var(--color-deep-blue);
+            border-bottom: 2px solid var(--color-bronze-trim);
+            padding-bottom: 8px;
+            margin-bottom: 0; 
+        }
+
+        .character-box {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+            background-color: var(--color-character-blue);
+            border: 2px solid var(--color-deep-blue);
+            border-radius: 20px;
+            padding: 10px; 
+            height: 100%; 
+            box-sizing: border-box; 
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .spartan-sprite {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            margin-top: 10px;
+            /* Using the neutral Spartan MP4 as the sprite */
+            content: url('https://i.imgur.com/YsNrM4u.mp4'); 
+        }
+
+        .script-area {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            position: relative;
+        }
+        
+        .scroll-wrapper {
+            position: relative;
+            min-height: 100%; 
+        }
+
+        .scroll-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* Scroll image asset */
+            content: url('https://i.imgur.com/ap6iyNp.png'); 
+            transform: rotateX(1deg) rotateZ(-0.5deg); 
+        }
+
+        .script-text {
+            position: absolute;
+            top: 43%; 
+            left: 23%; 
+            width: 54%; 
+            height: 30%; 
+            font-family: 'Alegreya Sans', sans-serif; 
+            font-size: 1.0em; 
+            line-height: 1.4; 
+            color: var(--color-scroll-text);
+            padding: 0;
+            overflow: hidden; 
+            z-index: 10;
+        }
+        
+        .action-button {
+            position: absolute;
+            bottom: 30px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            background-color: var(--color-bronze-trim);
+            color: var(--color-deep-blue);
+            border: 3px solid var(--color-deep-blue);
+            padding: 10px 30px; 
+            font-size: 1.0em;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            z-index: 20; 
+        }
+
+        .teleprompter-box {
+            grid-column: 1 / -1; 
+            grid-row: 3 / 4;
+            padding: 40px 100px; 
+            margin-top: 10px; 
+            
+            /* Teleprompter asset */
+            background-image: url('image_65e59f.jpg'); 
+            background-size: 100% 100%; 
+            background-repeat: no-repeat;
+            background-color: var(--color-deep-blue); 
+            border: none;
+            box-shadow: none;
+            position: relative;
+            min-height: 150px;
+        }
+        
+        .protocol-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            padding: 0 50px;
+        }
+
+        .protocol-button {
+            background-color: transparent;
+            color: var(--color-teleprompter-neon);
+            border: 2px solid var(--color-teleprompter-neon);
+            padding: 15px 10px;
+            font-family: 'Alegreya Sans', sans-serif;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .protocol-button:hover {
+            background-color: var(--color-teleprompter-neon);
+            color: var(--color-deep-blue);
+            box-shadow: 0 0 10px var(--color-teleprompter-neon);
+        }
+
+        .typing::after { content: '_'; animation: blink 0.7s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header-trim">SUBJECT FILE: KALLISTOS // EMOTION REGULATION PROTOCOL</div>
+
+        <div class="content-area">
+            
+            <h2>Kallistos: The Spartan Warrior</h2>
+            
+            <div class="character-box">
+                <img id="spartanSprite" src="" alt="Kallistos Character Sprite" class="spartan-sprite">
+                <p id="rageStatus" style="color: var(--color-rage-red); font-family: 'Cinzel', serif; margin-top: 10px; font-weight: bold;">SUBJECT STATUS: RAGE [5/10]</p>
+            </div>
+            
+            <div class="script-area">
+                <div class="scroll-wrapper">
+                    <img class="scroll-image" alt="Unfolded Blank Scroll Asset">
+                    <div id="scriptText" class="script-text typing"></div>
+                    <button id="continueButton" class="action-button">Acknowledge Incident Log</button>
+                </div>
+            </div>
+
+            <div class="teleprompter-box">
+                <h3 id="mentorTitle" style="color: var(--color-tech-neon); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 20px;">
+                    // MENTOR ACTION REQUIRED: SELECT DE-ESCALATION
+                </h3>
+                <div id="protocolArea" class="protocol-buttons" style="display: none;">
+                    
+                    <button class="protocol-button" id="protocol1" data-link="shield_assembly.html">PROTOCOL 1: Command him to BREATHE and hold position.</button>
+                    
+                    <button class="protocol-button" id="protocol2" data-link="apology_failure.html">PROTOCOL 2: Tell him to describe the opponent's actions using only FACTS.</button>
+                    
+                    <button class="protocol-button" id="protocol3" data-link="apology_failure.html">PROTOCOL 3: Agree that the noise was insulting and tell him to walk away.</button>
+                    
+                    <button class="protocol-button" id="protocol4" data-link="apology_failure.html">PROTOCOL 4: Instruct him to use physical force on an inanimate object.</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const scriptDisplay = document.getElementById('scriptText');
+        const continueButton = document.getElementById('continueButton');
+        const protocolArea = document.getElementById('protocolArea');
+        const mentorTitle = document.getElementById('mentorTitle');
+        const spartanSprite = document.getElementById('spartanSprite');
+        
+        // Use the angry MP4/GIF for the initial high-rage state
+        const RAGE_SPRITE = 'https://i.imgur.com/YsNrM4u.mp4'; 
+        
+        // Initial Dialogue for Crisis 1
+        const dialogueLines = [
+            "This delay is unacceptable. I have been static for 180 seconds...",
+            "There is a peasant nearby making an appalling noise with his mouth.",
+            "I instructed him to cease, using my shield-boss to gently reinforce the command. He continues.",
+            "I will not tolerate this cacophony of chewing! Mentor, direct my force."
+        ];
+        
+        let lineIndex = 0;
+        let charIndex = 0;
+        let isTyping = true;
+
+        spartanSprite.src = RAGE_SPRITE;
+
+        function typeCharacter() {
+            if (lineIndex < dialogueLines.length) {
+                const currentLine = dialogueLines[lineIndex];
+                if (charIndex < currentLine.length) {
+                    scriptDisplay.innerHTML += currentLine.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeCharacter, 25);
+                } else {
+                    scriptDisplay.classList.remove('typing');
+                    continueButton.disabled = false;
+                    isTyping = false;
+                }
+            } else {
+                // End of dialogue - show protocols
+                continueButton.style.display = 'none';
+                protocolArea.style.display = 'grid';
+            }
+        }
+
+        function typeNextLine() {
+            if (isTyping) return;
+
+            lineIndex++;
+            charIndex = 0;
+            scriptDisplay.innerHTML = '';
+            scriptDisplay.classList.add('typing');
+            continueButton.disabled = true;
+            isTyping = true;
+
+            typeCharacter();
+        }
+        
+        // Protocol Button Logic
+        document.querySelectorAll('.protocol-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const destination = button.getAttribute('data-link');
+                // Navigate to the next page based on protocol choice (Success or Failure)
+                window.location.href = destination;
+            });
+        });
+
+        window.onload = function() {
+            continueButton.disabled = true;
+            continueButton.addEventListener('click', typeNextLine);
+            typeCharacter();
+        };
+    </script>
+</body>
+</html>
