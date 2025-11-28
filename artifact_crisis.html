@@ -8,16 +8,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- COPY ALL STYLES FROM KALLISTOS_GAME.HTML HERE --- */
-        
+        /* --- NEW CORE STYLING DEFINITIONS --- */
         :root {
-            --color-deep-blue: #2E4057; 
-            --color-bronze-trim: #A57F4D; 
+            --color-steel-blue: #4A6572;        /* Steely Blue/Grey */
+            --color-apricot-gold: #D7A868;      /* Apricot Gold/Nude */
             --color-scroll-text: #301E0A;
-            --color-tech-neon: #7FFF00; 
-            --color-character-blue: rgba(173, 216, 230, 0.5); 
-            --color-teleprompter-neon: #00FFFF;
-            --color-rage-red: #FF0000;
+            --color-data-cyan: #00CED1;         /* Cyan for Neon Accents */
+            --color-character-bg: rgba(173, 216, 230, 0.4); /* Light transparent blue */
+            --color-teleprompter-neon: #00CED1; /* Use Cyan for Prompter */
+            --color-rage-red: #C70039;
         }
 
         body {
@@ -38,13 +37,13 @@
             width: 95%;
             max-width: 1200px; 
             background: rgba(255, 255, 255, 0.95);
-            border: 5px solid var(--color-deep-blue); 
+            border: 5px solid var(--color-steel-blue); 
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
             margin: 20px auto; 
         }
 
         .header-trim {
-            background-color: var(--color-deep-blue);
+            background-color: var(--color-steel-blue);
             color: white;
             padding: 10px 40px; 
             font-family: 'Cinzel', serif;
@@ -65,8 +64,8 @@
             grid-column: 1 / -1; 
             font-family: 'Cinzel', serif;
             font-size: 2.2em; 
-            color: var(--color-deep-blue);
-            border-bottom: 2px solid var(--color-bronze-trim);
+            color: var(--color-steel-blue);
+            border-bottom: 2px solid var(--color-apricot-gold);
             padding-bottom: 8px;
             margin-bottom: 0; 
         }
@@ -74,8 +73,8 @@
         .character-box {
             grid-column: 1 / 2;
             grid-row: 2 / 3;
-            background-color: var(--color-character-blue);
-            border: 2px solid var(--color-deep-blue);
+            background-color: var(--color-character-bg);
+            border: 2px solid var(--color-steel-blue);
             border-radius: 20px;
             padding: 10px; 
             height: 100%; 
@@ -91,8 +90,8 @@
             max-width: 250px;
             height: auto;
             margin-top: 10px;
-            /* Using the neutral Spartan MP4 as the sprite */
-            content: url('https://i.imgur.com/YsNrM4u.mp4'); 
+            /* Fixed Image Link */
+            border: 2px solid var(--color-apricot-gold); 
         }
 
         .script-area {
@@ -139,9 +138,9 @@
             left: 50%;
             transform: translateX(-50%);
             width: 40%;
-            background-color: var(--color-bronze-trim);
-            color: var(--color-deep-blue);
-            border: 3px solid var(--color-deep-blue);
+            background-color: var(--color-apricot-gold); 
+            color: var(--color-steel-blue); 
+            border: 3px solid var(--color-steel-blue); 
             padding: 10px 30px; 
             font-size: 1.0em;
             text-transform: uppercase;
@@ -160,7 +159,7 @@
             background-image: url('image_65e59f.jpg'); 
             background-size: 100% 100%; 
             background-repeat: no-repeat;
-            background-color: var(--color-deep-blue); 
+            background-color: var(--color-steel-blue); 
             border: none;
             box-shadow: none;
             position: relative;
@@ -169,7 +168,7 @@
         
         .protocol-buttons {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 options for this crisis */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 10px;
             width: 100%;
             position: absolute;
@@ -193,7 +192,7 @@
 
         .protocol-button:hover {
             background-color: var(--color-teleprompter-neon);
-            color: var(--color-deep-blue);
+            color: var(--color-steel-blue);
             box-shadow: 0 0 10px var(--color-teleprompter-neon);
         }
 
@@ -201,7 +200,7 @@
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
         
         /* Specific styling to reflect the current, stable status */
-        #rageStatus { color: var(--color-tech-neon); } 
+        #rageStatus { color: var(--color-data-cyan); } 
 
     </style>
 </head>
@@ -216,7 +215,7 @@
             <h2>Kallistos: The Spartan Warrior</h2>
             
             <div class="character-box">
-                <img id="spartanSprite" src="https://i.imgur.com/YsNrM4u.mp4" alt="Kallistos Character Sprite" class="spartan-sprite">
+                <img id="spartanSprite" src="https://i.imgur.com/1000059874.jpg" alt="Kallistos Character Sprite" class="spartan-sprite">
                 <p id="rageStatus" style="font-family: 'Cinzel', serif; margin-top: 10px; font-weight: bold;">SUBJECT STATUS: RAGE [1/10] (Stable)</p>
             </div>
             
@@ -229,7 +228,7 @@
             </div>
 
             <div class="teleprompter-box">
-                <h3 id="mentorTitle" style="color: var(--color-tech-neon); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 20px;">
+                <h3 id="mentorTitle" style="color: var(--color-data-cyan); font-family: 'Cinzel', serif; text-align: center; margin-bottom: 20px;">
                     // MENTOR ACTION REQUIRED: SELECT FOCUS INITIATIVE
                 </h3>
                 <div id="protocolArea" class="protocol-buttons" style="display: none;">
