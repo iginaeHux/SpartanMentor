@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISSION FAILURE // EMOTION REGULATION</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Import Core Styling Definitions --- */
+        :root {
+            --color-deep-blue: #2E4057; 
+            --color-bronze-trim: #A57F4D; 
+            --color-tech-neon: #7FFF00; 
+            --color-failure-red: #8B0000;
+        }
+
+        body {
+            /* Using the Classroom Hall background */
+            background-image: url('https://i.imgur.com/8A8deCd.jpeg'); 
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Alegreya Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .failure-box {
+            width: 80%;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 4px solid var(--color-failure-red);
+            box-shadow: 0 0 30px var(--color-failure-red);
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3em;
+            color: var(--color-failure-red);
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: white;
+            border-bottom: 2px solid var(--color-bronze-trim);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+
+        p {
+            font-size: 1.3em;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .failure-detail {
+            color: #FFB6C1;
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+        
+        .retry-button {
+            background-color: var(--color-bronze-trim);
+            color: var(--color-deep-blue);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .retry-button:hover {
+            background-color: #C39F6D; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="failure-box">
+        <h1>// CRITICAL MISSION FAILURE //</h1>
+        
+        <h2>PROTOCOL VIOLATION: LACK OF CONTROL</h2>
+        
+        <p>
+            Subject Kallistos failed to integrate the core concept of modern control.<span class="failure-detail">Rage Status exceeded acceptable thresholds.</span>
+        </p>
+        <p>
+            A lethal approach to a non-lethal situation invalidates the entire re-integration process. The Spartan mentality must be redirected, not indulged.
+        </p>
+        <p>
+            **Restarting simulation to preserve historical integrity.**
+        </p>
+
+        <button class="retry-button" onclick="window.location.href='kallistos_game.html'">
+            RE-INITIATE EMOTION REGULATION PROTOCOL
+        </button>
+    </div>
+
+</body>
+</html>
