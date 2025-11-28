@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoMentor // Student Selection</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-deep-blue: #2E4057; 
+            --color-bronze-trim: #A57F4D; 
+            --color-tech-neon: #7FFF00; 
+            --color-disabled: #444; 
+        }
+
+        body {
+            /* Use the Classroom Hall background */
+            background-image: url('https://i.imgur.com/8A8deCd.jpeg'); 
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Alegreya Sans', sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5em;
+            color: var(--color-tech-neon);
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .character-card {
+            background: rgba(0, 0, 0, 0.85);
+            border: 3px solid var(--color-bronze-trim);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            height: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .character-card.active {
+            border-color: var(--color-tech-neon);
+            box-shadow: 0 0 15px var(--color-tech-neon);
+        }
+
+        .character-card.active:hover {
+            transform: scale(1.03);
+            background: rgba(0, 0, 0, 0.95);
+        }
+
+        .character-card.inactive {
+            cursor: not-allowed;
+            opacity: 0.4;
+            background: var(--color-disabled);
+        }
+
+        .char-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: var(--color-bronze-trim);
+        }
+
+        .char-img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin: 0 auto 15px;
+            border: 1px solid white;
+        }
+
+        .char-status {
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        .start-button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: var(--color-tech-neon);
+            color: var(--color-deep-blue);
+            border: none;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+        }
+
+        .start-button:disabled {
+            background-color: #666;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>// SELECT YOUR SPARTAN MENTEE //</h1>
+
+    <div class="character-grid">
+        
+        <div class="character-card active" onclick="window.location.href='kallistos_game.html'">
+            <div>
+                <div class="char-title">Kallistos: The Spartan Warrior</div>
+                <img src="https://i.imgur.com/YsNrM4u.mp4" alt="Kallistos Spartan Warrior" class="char-img">
+                <p>
+                    <span style="color: var(--color-tech-neon); font-weight: bold;">OBJECTIVE:</span> Self-Control and Emotional Regulation. Must be able to sit in a test room without engaging in violence.
+                </p>
+            </div>
+            <button class="start-button">START MENTORSHIP</button>
+        </div>
+
+        <div class="character-card inactive">
+            <div>
+                <div class="char-title">Elara: The Roman Scholar</div>
+                <img src="https://i.imgur.com/8Qj8j3D.gif" alt="Elara Roman Scholar" class="char-img"> 
+                <p>
+                    <span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.** Requires completion of one mentorship cycle.
+                </p>
+            </div>
+            <button class="start-button" disabled>LOCKED</button>
+        </div>
+
+        <div class="character-card inactive">
+            <div>
+                <div class="char-title">Akiko: The Sengoku Strategist</div>
+                <img src="https://i.imgur.com/1000059874.jpg" alt="Akiko Samurai" class="char-img">
+                <p>
+                    <span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.** Requires completion of one mentorship cycle.
+                </p>
+            </div>
+            <button class="start-button" disabled>LOCKED</button>
+        </div>
+        
+        <div class="character-card inactive">
+            <div><div class="char-title">Isabella: The Renaissance</div><img src="https://i.imgur.com/1000059874.jpg" alt="Isabella Astronomer" class="char-img"><p><span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.**</p></div>
+            <button class="start-button" disabled>LOCKED</button>
+        </div>
+        <div class="character-card inactive">
+            <div><div class="char-title">Nefer: The Old Kingdom</div><img src="https://i.imgur.com/1000059874.jpg" alt="Nefer Engineer" class="char-img"><p><span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.**</p></div>
+            <button class="start-button" disabled>LOCKED</button>
+        </div>
+        <div class="character-card inactive">
+            <div><div class="char-title">Sun-Ho: The Joseon Scholar</div><img src="https://i.imgur.com/1000059874.jpg" alt="Sun-Ho Scholar" class="char-img"><p><span style="color: #ccc; font-weight: bold;">OBJECTIVE:</span> **LOCKED.**</p></div>
+            <button class="start-button" disabled>LOCKED</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
