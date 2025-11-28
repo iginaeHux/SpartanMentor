@@ -3,27 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChronoMentor: Spartan Operational Interface</title>
+    <title>ChronoMentor // Welcome Briefing</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. THEME & COLORS --- */
+        /* --- Core Styling Definitions --- */
         :root {
             --color-deep-blue: #2E4057; 
             --color-bronze-trim: #A57F4D; 
-            --color-scroll-text: #301E0A;
             --color-tech-neon: #7FFF00; 
-            --color-character-blue: rgba(173, 216, 230, 0.5); 
-            --color-teleprompter-neon: #00FFFF; /* Bright Cyan/Aqua from the screen asset */
+            --color-teleprompter-neon: #00FFFF;
         }
 
-        /* --- 2. IMMERSIVE BACKGROUND --- */
         body {
-            background-image: url('https://i.imgur.com/aBfZEED.jpeg'); /* Victorian University Background */
+            /* Using the Classroom Hall background */
+            background-image: url('https://i.imgur.com/8A8deCd.jpeg'); 
             background-size: cover;
             background-position: center center;
-            background-attachment: fixed; 
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Alegreya Sans', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -32,305 +32,78 @@
             min-height: 100vh;
         }
         
-        /* --- 3. FLOATING CONTENT CONTAINER & HEADER --- */
-        .container {
-            width: 95%;
-            max-width: 1200px; 
-            background: rgba(255, 255, 255, 0.95);
-            border: 5px solid var(--color-deep-blue); 
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
-            margin: 20px auto; 
-        }
-
-        .header-trim {
-            background-color: var(--color-deep-blue);
-            color: white;
-            padding: 10px 40px; 
-            font-family: 'Cinzel', serif;
-            font-size: 1.6em; 
+        .briefing-box {
+            width: 80%;
+            max-width: 900px;
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.9); 
+            border: 3px solid var(--color-bronze-trim);
+            box-shadow: 0 0 20px var(--color-tech-neon);
             text-align: center;
         }
-        
-        /* --- 4. NEW GRID LAYOUT (Vertical space optimized) --- */
-        .content-area {
-            padding: 20px 30px; 
-            display: grid;
-            grid-template-columns: 350px 1fr; 
-            grid-template-rows: auto 1fr auto;
-            gap: 15px; 
-            min-height: 80vh; 
-        }
 
-        h2 {
-            grid-column: 1 / -1; 
+        h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2.2em; 
-            color: var(--color-deep-blue);
+            font-size: 2.5em;
+            color: var(--color-tech-neon);
             border-bottom: 2px solid var(--color-bronze-trim);
-            padding-bottom: 8px;
-            margin-bottom: 0; 
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
         }
 
-        /* --- 5. CHARACTER BOX (Left Side) --- */
-        .character-box {
-            grid-column: 1 / 2;
-            grid-row: 2 / 3;
-            background-color: var(--color-character-blue);
-            border: 2px solid var(--color-deep-blue);
-            border-radius: 20px;
-            padding: 10px; 
-            height: 100%; 
-            box-sizing: border-box; 
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            flex-direction: column;
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--color-teleprompter-neon);
+            font-weight: bold;
         }
         
-        .spartan-sprite {
-            width: 100%;
-            max-width: 250px;
-            height: auto;
-            margin-top: 10px;
-            /* Static Image link - Replace with your GIF when ready */
-            content: url('1000059874.jpg'); 
-        }
-
-        /* --- 6. SCRIPT AREA (Right Side) --- */
-        .script-area {
-            grid-column: 2 / 3;
-            grid-row: 2 / 3;
-            position: relative;
-        }
-        
-        .script-wrapper {
-            position: relative;
-            min-height: 100%; 
-        }
-
-        .scroll-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: absolute;
-            top: 0;
-            left: 0;
-            content: url('https://i.imgur.com/ap6iyNp.png'); /* YOUR SCROLL IMAGE */
-            transform: rotateX(1deg) rotateZ(-0.5deg); 
-        }
-
-        .script-text {
-            /* FINAL ADJUSTED COORDINATES FOR PERFECT FIT */
-            position: absolute;
-            top: 43%; 
-            left: 23%; 
-            width: 54%; 
-            height: 30%; 
-            font-family: 'Alegreya Sans', sans-serif; 
-            font-size: 1.0em; 
-            line-height: 1.4; 
-            color: var(--color-scroll-text);
-            padding: 0;
-            overflow: hidden; 
-            z-index: 10;
-        }
-        
-        .action-button {
-            position: absolute;
-            bottom: 30px; 
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40%;
+        .continue-button {
             background-color: var(--color-bronze-trim);
             color: var(--color-deep-blue);
-            border: 3px solid var(--color-deep-blue);
-            padding: 10px 30px; 
-            font-size: 1.0em;
-            text-transform: uppercase;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            z-index: 20; 
-        }
-
-        /* --- 7. DIGITAL TELEPROMPTER (Bottom Row) --- */
-        .teleprompter-box {
-            grid-column: 1 / -1; 
-            grid-row: 3 / 4;
-            padding: 40px 100px; 
-            margin-top: 10px; 
-            
-            /* DIGITAL SCREEN STYLING */
-            background-image: url('image_65e59f.jpg'); /* YOUR DIGITAL SCREEN FRAME */
-            background-size: 100% 100%; 
-            background-repeat: no-repeat;
-            background-color: var(--color-deep-blue); 
             border: none;
-            box-shadow: none;
-            position: relative;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            margin-top: 30px;
         }
 
-        .teleprompter-content {
-            position: relative;
-            z-index: 2; 
-            color: var(--color-teleprompter-neon);
-            text-align: center;
+        .continue-button:hover {
+            background-color: #C39F6D; 
         }
-
-        .teleprompter-content h3 {
-            color: var(--color-teleprompter-neon); 
-            font-size: 1.3em;
-            letter-spacing: 2px;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-family: 'Cinzel', serif; 
-        }
-        
-        .choice-list {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
-        
-        .choice-item {
-            flex: 1;
-        }
-
-        .choice-button {
-            background-color: rgba(0, 0, 0, 0.5); 
-            color: var(--color-teleprompter-neon); 
-            text-decoration: none; 
-            display: block;
-            padding: 10px 10px; 
-            border: 1px solid var(--color-teleprompter-neon);
-            box-shadow: 0 0 5px var(--color-teleprompter-neon); 
-            font-family: 'Alegreya Sans', sans-serif;
-            font-size: 0.9em;
-            width: 100%;
-            box-sizing: border-box;
-        }
-        
-        .choice-button:hover {
-            background-color: var(--color-teleprompter-neon);
-            color: var(--color-deep-blue);
-        }
-
-        /* Typing Cursor */
-        .typing::after { content: '_'; animation: blink 0.7s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="briefing-box">
+        <h1>// CHRONOMENTOR PROGRAM INITIATION //</h1>
         
-        <div class="header-trim">SUBJECT FILE: KALLISTOS // EMOTION REGULATION PROTOCOL</div>
+        <p>
+            Welcome to the <span class="highlight">ChronoMentor Program</span>. You are one of the highly selective applicants approved for a time-travel venture.
+        </p>
+        <p>
+            <span class="highlight">HOWEVER:</span> There has been a delay. While applicants from the future are many and have successfully traveled back, our participants from the past are—well—still acclimatizing to modern ways.
+        </p>
+        <p>
+            To help our historical participants avoid mission-critical failures, we are pairing them with modern mentors (you) to help them build skills for modern society. <span class="highlight">They will be graded on the knowledge you teach them.</span>
+        </p>
+        <p style="text-align: center; font-size: 1.4em;">
+            **Select your first student to begin the assessment.**
+        </p>
 
-        <div class="content-area">
-            
-            <h2>Kallistos: The Spartan Warrior</h2>
-            
-            <div class="character-box">
-                <img src="1000059874.jpg" alt="Kallistos Character Sprite" class="spartan-sprite">
-                <p style="color: var(--color-deep-blue); font-family: 'Cinzel', serif; margin-top: 10px;">SUBJECT STATUS: RAGE [5/10]</p>
-            </div>
-            
-            <div class="script-area">
-                <div class="script-wrapper">
-                    <img class="scroll-image" alt="Unfolded Blank Scroll Asset">
-                    <div id="scriptText" class="script-text typing"></div>
-                    <button id="continueButton" class="action-button">ACKNOWLEDGE INCIDENT LOG</button>
-                </div>
-            </div>
-
-            <div class="teleprompter-box" id="choiceSection">
-                <div class="teleprompter-content">
-                    <h3>// MENTOR ACTION REQUIRED: SELECT PROTOCOL</h3>
-                    <ul class="choice-list">
-                        <li class="choice-item">
-                            <button class="choice-button">
-                                <a href="shield_assembly.html" style="color: inherit; text-decoration: none; display: block;">PROTOCOL 1: Command him to BREATHE and hold position.</a>
-                            </button>
-                        </li>
-                        <li class="choice-item">
-                            <button class="choice-button">
-                                <a href="apology_failure.html" style="color: inherit; text-decoration: none; display: block;">PROTOCOL 2: Tell him to describe the opponent's actions using only FACTS.</a>
-                            </button>
-                        </li>
-                        <li class="choice-item">
-                            <button class="choice-button">
-                                <a href="apology_failure.html" style="color: inherit; text-decoration: none; display: block;">PROTOCOL 3: Agree that the noise was insulting and tell him to walk away.</a>
-                            </button>
-                        </li>
-                        <li class="choice-item">
-                            <button class="choice-button">
-                                <a href="apology_failure.html" style="color: inherit; text-decoration: none; display: block;">PROTOCOL 4: Instruct him to use physical force on an inanimate object.</a>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <button class="continue-button" onclick="window.location.href='selection.html'">
+            ACKNOWLEDGE AND PROCEED TO STUDENT FILES
+        </button>
     </div>
 
-    <script>
-        const scriptDisplay = document.getElementById('scriptText');
-        const continueButton = document.getElementById('continueButton');
-        const choiceSection = document.getElementById('choiceSection');
-        
-        const dialogueLines = [
-            "This delay is unacceptable. I have been static for 180 seconds, Mentor.",
-            "There is a peasant nearby making an appalling noise with his mouth. I instructed him to cease, using my shield-boss to gently reinforce the command.",
-            "He now screams about 'assault.' I merely taught him discipline. How do I make the weak fear me without drawing the attention of the state?"
-        ];
-        
-        let lineIndex = 0;
-        let charIndex = 0;
-        let isTyping = true;
-
-        choiceSection.style.display = 'none';
-
-        function typeCharacter() {
-            if (lineIndex < dialogueLines.length) {
-                const currentLine = dialogueLines[lineIndex];
-                if (charIndex < currentLine.length) {
-                    scriptDisplay.innerHTML += currentLine.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeCharacter, 25);
-                } else {
-                    scriptDisplay.classList.remove('typing');
-                    continueButton.disabled = false;
-                    isTyping = false;
-                }
-            } else {
-                scriptDisplay.innerHTML += "<br><br>...AWAITING COMMAND SIGNAL.";
-                continueButton.style.display = 'none';
-                choiceSection.style.display = 'block';
-            }
-        }
-
-        function typeNextLine() {
-            if (isTyping || lineIndex >= dialogueLines.length) return;
-            lineIndex++;
-            charIndex = 0;
-            scriptDisplay.innerHTML = '';
-            continueButton.disabled = true;
-            isTyping = true;
-            if (lineIndex < dialogueLines.length) {
-                scriptDisplay.classList.add('typing');
-                typeCharacter();
-            } else {
-                typeCharacter();
-            }
-        }
-
-        window.onload = function() {
-            continueButton.disabled = true;
-            typeCharacter();
-            continueButton.addEventListener('click', typeNextLine);
-        };
-    </script>
 </body>
 </html>
