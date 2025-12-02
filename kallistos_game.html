@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@400;700&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CORE STYLING DEFINITIONS (Steely/Apricot Palette) --- */
+        /* --- CORE STYLING DEFINITIONS (Final Steely/Apricot Palette) --- */
         :root {
             --color-steel-blue: #4A6572;        /* Steely Blue/Grey for structure */
             --color-apricot-gold: #D7A868;      /* Apricot Gold/Nude for accents/buttons */
-            --color-scroll-text: #301E0A;       /* Dark brown for scroll text */
+            --color-scroll-text: #301E0A;       /* Dark brown/black for text */
             --color-data-cyan: #00CED1;         /* Cyan for high-tech neon */
-            --color-background-overlay: rgba(255, 255, 255, 0.9); /* Opaque white box */
-            --color-character-bg: rgba(173, 216, 230, 0.4); /* Light transparent blue for character box */
+            --color-background-overlay: rgba(255, 255, 255, 0.9); 
+            --color-character-bg: rgba(173, 216, 230, 0.3); 
             --color-rage-red: #C70039;
         }
 
@@ -30,57 +30,55 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 100vh; /* Use min-height to allow content to dictate height */
         }
         
         .container {
-            width: 95%;
-            max-width: 1200px; 
+            width: 98%; /* Slightly wider */
+            max-width: 1250px; /* Slightly wider max */
             background: var(--color-background-overlay);
-            border: 5px solid var(--color-steel-blue); 
+            border: 3px solid var(--color-steel-blue); 
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
-            margin: 20px auto; 
+            margin: 10px auto; /* Reduced margin */
             padding: 0;
         }
 
         .header-trim {
             background-color: var(--color-steel-blue);
             color: white;
-            padding: 15px 40px; /* Increased padding */
+            padding: 10px 40px; /* Reduced padding */
             font-family: 'Cinzel', serif;
-            font-size: 1.6em; 
+            font-size: 1.4em; 
             text-align: center;
             border-bottom: 2px solid var(--color-apricot-gold);
         }
         
         .content-area {
-            padding: 20px 30px; 
+            padding: 15px 25px; /* Reduced padding */
             display: grid;
-            /* Layout: 350px for Character, 1fr for Scroll */
-            grid-template-columns: 350px 1fr; 
-            grid-template-rows: auto 1fr auto; /* Title, Body, Footer (Teleprompter) */
-            gap: 15px; 
-            min-height: 75vh; 
+            grid-template-columns: 300px 1fr; /* Reduced character column width */
+            grid-template-rows: auto 1fr auto; 
+            gap: 15px; /* Reduced gap */
+            min-height: 70vh; /* Reduced overall height */
         }
 
         h2 {
             grid-column: 1 / -1; 
             font-family: 'Cinzel', serif;
-            font-size: 2.2em; 
+            font-size: 2.0em; /* Reduced size */
             color: var(--color-steel-blue);
             border-bottom: 2px solid var(--color-apricot-gold);
             padding-bottom: 8px;
             margin-bottom: 0; 
         }
 
-        /* Character Box (Left) - Matching Mockup Style */
         .character-box {
             grid-column: 1 / 2;
             grid-row: 2 / 3;
             background-color: var(--color-character-bg);
             border: 2px solid var(--color-steel-blue);
-            border-radius: 25px; /* Smoother rounded corners */
-            padding: 20px; 
+            border-radius: 25px; 
+            padding: 15px; /* Reduced padding */
             height: 100%; 
             box-sizing: border-box; 
             display: flex;
@@ -91,25 +89,27 @@
         
         .spartan-sprite {
             width: 100%;
-            max-width: 300px; /* Made slightly larger */
+            max-width: 250px; /* Reduced max width */
+            /* REMOVED HEIGHT: Let the GIF control its own height */
             height: auto;
             margin-top: 10px;
-            /* Using the working GIF link */
             border-radius: 15px;
+            /* Added black background to contain the GIF/Image without showing white through transparency */
+            background-color: black; 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         .status-text {
              font-family: 'Cinzel', serif; 
-             margin-top: 15px; 
+             margin-top: 10px; /* Reduced margin */
              font-weight: bold;
-             font-size: 1.1em;
+             font-size: 1.0em;
              color: var(--color-steel-blue);
              text-align: center;
              padding: 5px 0;
         }
 
-        /* Scroll Area (Right) */
+        /* Script Area (Right) - Scroll Image Container */
         .script-area {
             grid-column: 2 / 3;
             grid-row: 2 / 3;
@@ -118,32 +118,38 @@
         
         .scroll-wrapper {
             position: relative;
-            min-height: 100%; 
-            border: 3px solid var(--color-apricot-gold); /* Apricot border around the whole script area */
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 100%;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .scroll-image {
             width: 100%;
-            height: 100%;
+            max-width: 700px; /* Reduced max width for scroll */
+            height: auto;
             object-fit: contain;
-            position: absolute;
-            top: 0;
-            left: 0;
             /* Scroll image asset */
             content: url('https://i.imgur.com/ap6iyNp.png'); 
-            transform: rotateX(1deg) rotateZ(-0.5deg); 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            z-index: 5;
         }
-
+        
         .script-text {
             position: absolute;
-            top: 40%; 
-            left: 20%; 
-            width: 60%; 
-            height: 35%; 
+            top: 45%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            width: 35%; 
             font-family: 'Alegreya Sans', sans-serif; 
-            font-size: 1.1em; /* Slightly larger text */
-            line-height: 1.5; 
+            font-size: 1.05em; 
+            line-height: 1.4; /* Slightly tighter line spacing */
             color: var(--color-scroll-text);
             padding: 0;
             overflow: hidden; 
@@ -153,15 +159,15 @@
         /* Continue Button (Apricot/Steel) */
         .action-button {
             position: absolute;
-            bottom: 30px; 
+            bottom: 20%; /* Moved up for compression */
             left: 50%;
             transform: translateX(-50%);
-            width: 45%;
+            width: 40%;
             background-color: var(--color-apricot-gold); 
             color: var(--color-steel-blue); 
             border: 3px solid var(--color-steel-blue); 
-            padding: 12px 30px; 
-            font-size: 1.0em;
+            padding: 10px 25px; /* Reduced padding */
+            font-size: 0.9em;
             text-transform: uppercase;
             cursor: pointer;
             font-family: 'Cinzel', serif;
@@ -177,34 +183,34 @@
         .teleprompter-box {
             grid-column: 1 / -1; 
             grid-row: 3 / 4;
-            padding: 40px 100px; 
-            margin-top: 10px; 
+            padding: 15px 50px; /* Significantly reduced vertical padding */
+            margin-top: 5px; /* Reduced margin */
             
-            /* Use a solid steel background for the button area */
             background-color: var(--color-steel-blue); 
             border: 4px solid var(--color-apricot-gold);
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
             position: relative;
-            min-height: 150px;
+            min-height: 120px; /* Reduced min-height */
         }
         
         #mentorTitle {
             color: var(--color-data-cyan); 
             font-family: 'Cinzel', serif; 
             text-align: center; 
-            margin-bottom: 20px;
-            text-shadow: 0 0 8px rgba(0, 206, 209, 0.7); /* Subtle neon glow */
+            margin-bottom: 10px; /* Reduced margin */
+            font-size: 1.4em; /* Reduced size */
+            text-shadow: 0 0 8px rgba(0, 206, 209, 0.7); 
         }
 
         .protocol-buttons {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            gap: 10px; /* Reduced gap */
             width: 100%;
             padding: 0 20px;
             box-sizing: border-box;
             position: absolute;
-            top: 60%;
+            top: 55%; 
             left: 0;
             transform: translateY(-50%);
         }
@@ -214,9 +220,9 @@
             background-color: transparent;
             color: var(--color-data-cyan);
             border: 2px solid var(--color-data-cyan);
-            padding: 15px 10px;
+            padding: 10px 8px; /* Reduced padding */
             font-family: 'Alegreya Sans', sans-serif;
-            font-size: 0.9em;
+            font-size: 0.85em; /* Reduced size */
             cursor: pointer;
             transition: all 0.2s;
             text-align: center;
@@ -251,7 +257,9 @@
             <div class="script-area">
                 <div class="scroll-wrapper">
                     <img class="scroll-image" alt="Unfolded Blank Scroll Asset">
+                    
                     <div id="scriptText" class="script-text typing"></div>
+                    
                     <button id="continueButton" class="action-button">Acknowledge Incident Log</button>
                 </div>
             </div>
@@ -277,9 +285,6 @@
         const scriptDisplay = document.getElementById('scriptText');
         const continueButton = document.getElementById('continueButton');
         const protocolArea = document.getElementById('protocolArea');
-        const rageStatus = document.getElementById('rageStatus');
-        
-        // Initial Dialogue for Crisis 1
         const dialogueLines = [
             "This delay is unacceptable. I have been static for 180 seconds...",
             "There is a peasant nearby making an appalling noise with his mouth.",
@@ -304,7 +309,6 @@
                     isTyping = false;
                 }
             } else {
-                // End of dialogue - show protocols
                 continueButton.style.display = 'none';
                 protocolArea.style.display = 'grid';
             }
@@ -323,7 +327,6 @@
             typeCharacter();
         }
         
-        // Protocol Button Logic
         document.querySelectorAll('.protocol-button').forEach(button => {
             button.addEventListener('click', () => {
                 const destination = button.getAttribute('data-link');
